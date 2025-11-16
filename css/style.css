@@ -87,6 +87,12 @@ body {
     background: #2d3748; /* bg-gray-800 */
 }
 
+/* Form Controls */
+select option {
+    background-color: #2d3748; /* bg-gray-800 */
+    color: #ffffff;
+}
+
 /* Form Validation */
 .error-message {
     color: #ef4444; /* text-red-500 */
