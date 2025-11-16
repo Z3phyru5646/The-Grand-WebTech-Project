@@ -1,7 +1,7 @@
 # The-Grand-WebTech-Project
 
 
-[FitTrack Pro]...A Frontend-only website! You're one-stop shop for all your fitness tracking needs...just have a look at it!! >_<
+[FitTrack Pro]...A Frontend-only website! Your one-stop shop for all your fitness tracking needs...just have a look at it!! >_<
 
 
 https://z3phyru5646.github.io/The-Grand-WebTech-Project/
