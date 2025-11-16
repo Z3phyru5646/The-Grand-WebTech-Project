@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Planner - FitTrack Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-900 text-white font-sans">
+
+    <nav class="bg-white/10 backdrop-blur-md fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <span class="text-2xl font-bold text-cyan-400">FitTrack Pro</span>
+                <div class="hidden md:flex space-x-4">
+                    <a href="index.html" class="nav-link">Overview</a>
+                    <a href="activity.html" class="nav-link">Activity Log</a>
+                    <a href="meals.html" class="nav-link active">Meal Planner</a>
+                    <a href="summary.html" class="nav-link">Summary</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 max-w-7xl mx-auto px-4">
+        <h1 class="text-3xl font-bold mb-8">Meal Planner</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="meal-sections">
+            <!-- Meal sections will be dynamically inserted here -->
+        </div>
+        <div class="mt-8 text-center">
+            <h2 class="text-2xl font-bold">Total Daily Calories: <span id="total-calories">0</span> kcal</h2>
+        </div>
+    </main>
+    
+    <script src="js/data.js"></script>
+    <script src="js/meals.js"></script>
+</body>
+</html>

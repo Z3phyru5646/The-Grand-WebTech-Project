@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Log - FitTrack Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-900 text-white font-sans">
+
+    <nav class="bg-white/10 backdrop-blur-md fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <span class="text-2xl font-bold text-cyan-400">FitTrack Pro</span>
+                <div class="hidden md:flex space-x-4">
+                    <a href="index.html" class="nav-link">Overview</a>
+                    <a href="activity.html" class="nav-link active">Activity Log</a>
+                    <a href="meals.html" class="nav-link">Meal Planner</a>
+                    <a href="summary.html" class="nav-link">Summary</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 max-w-7xl mx-auto px-4">
+        <h1 class="text-3xl font-bold mb-8">Activity Log</h1>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2">
+                <div id="activity-filters" class="flex space-x-2 mb-4">
+                    <button class="filter-btn bg-cyan-500 text-black py-2 px-4 rounded-md" data-filter="all">All</button>
+                    <button class="filter-btn bg-white/10 text-white py-2 px-4 rounded-md" data-filter="morning">Morning</button>
+                    <button class="filter-btn bg-white/10 text-white py-2 px-4 rounded-md" data-filter="afternoon">Afternoon</button>
+                    <button class="filter-btn bg-white/10 text-white py-2 px-4 rounded-md" data-filter="evening">Evening</button>
+                </div>
+                <div id="activity-list" class="space-y-4">
+                    <!-- Activity items will be dynamically inserted here -->
+                </div>
+            </div>
+            <div id="add-activity-form" class="glass-card p-6">
+                <h2 class="text-2xl font-bold mb-4">Add New Activity</h2>
+                <form id="activity-form" class="space-y-4">
+                    <input type="text" id="activity-name" placeholder="Activity Name" class="w-full bg-white/5 p-3 rounded-md border border-white/20 focus:outline-none focus:ring-2 focus:ring-cyan-400">
+                    <input type="number" id="activity-duration" placeholder="Duration (minutes)" class="w-full bg-white/5 p-3 rounded-md border border-white/20 focus:outline-none focus:ring-2 focus:ring-cyan-400">
+                    <input type="number" id="activity-calories" placeholder="Calories Burned" class="w-full bg-white/5 p-3 rounded-md border border-white/20 focus:outline-none focus:ring-2 focus:ring-cyan-400">
+                    <select id="activity-time" class="w-full bg-white/5 p-3 rounded-md border border-white/20 focus:outline-none focus:ring-2 focus:ring-cyan-400">
+                        <option value="morning">Morning</option>
+                        <option value="afternoon">Afternoon</option>
+                        <option value="evening">Evening</option>
+                    </select>
+                    <button type="submit" class="w-full bg-cyan-500 text-black font-bold py-3 rounded-md hover:bg-cyan-400 transition-colors">Add Activity</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <div id="success-modal" class="modal-overlay">
+        <div class="modal-content glass-card p-8 text-center">
+            <h2 class="text-2xl font-bold mb-4">Success!</h2>
+            <p>Activity added successfully.</p>
+            <button id="close-modal" class="mt-6 bg-cyan-500 text-black py-2 px-6 rounded-md">Close</button>
+        </div>
+    </div>
+    
+    <script src="js/data.js"></script>
+    <script src="js/activity.js"></script>
+</body>
+</html>

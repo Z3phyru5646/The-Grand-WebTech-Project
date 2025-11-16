@@ -1,0 +1,79 @@
+/* Basic Styles & Glassmorphism */
+body {
+    background-color: #0a0a0a;
+    background-image: radial-gradient(circle at top right, rgba(16, 83, 107, 0.3), transparent 40%),
+                      radial-gradient(circle at bottom left, rgba(56, 20, 107, 0.3), transparent 50%);
+    min-height: 100vh;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.nav-link {
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-link:hover {
+    background-color: rgba(0, 255, 255, 0.1);
+    color: #00ffff;
+}
+
+.nav-link.active {
+    background-color: #00ffff;
+    color: #0a0a0a;
+    font-weight: bold;
+}
+
+/* Custom Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1000;
+}
+
+.modal-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.visible .modal-content {
+    transform: scale(1);
+}
+
+/* Animations */
+.fade-in {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
