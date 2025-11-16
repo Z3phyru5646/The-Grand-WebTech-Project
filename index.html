@@ -19,6 +19,7 @@
                     <a href="meals.html" class="nav-link">Meal Planner</a>
                     <a href="summary.html" class="nav-link">Summary</a>
                 </div>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-white/20">☀️</button>
             </div>
         </div>
     </nav>
@@ -33,7 +34,33 @@
         </div>
     </main>
 
+    <!-- Goal Setting Modal -->
+    <div id="goal-modal" class="modal-overlay">
+        <div class="modal-content glass-card p-8 text-center">
+            <h2 class="text-2xl font-bold mb-4">Set Daily Goals</h2>
+            <form id="goal-form" class="space-y-4">
+                <div>
+                    <label for="steps-goal" class="block text-left mb-1">Steps</label>
+                    <input type="number" id="steps-goal" class="w-full bg-white/5 p-3 rounded-md border border-white/20">
+                </div>
+                <div>
+                    <label for="calories-goal" class="block text-left mb-1">Calories (kcal)</label>
+                    <input type="number" id="calories-goal" class="w-full bg-white/5 p-3 rounded-md border border-white/20">
+                </div>
+                <div>
+                    <label for="water-goal" class="block text-left mb-1">Water (liters)</label>
+                    <input type="number" id="water-goal" step="0.1" class="w-full bg-white/5 p-3 rounded-md border border-white/20">
+                </div>
+                <div class="flex space-x-4 mt-6">
+                    <button type="submit" class="w-full bg-cyan-500 text-black font-bold py-3 rounded-md">Save Goals</button>
+                    <button type="button" id="close-goal-modal" class="w-full bg-white/10 text-white font-bold py-3 rounded-md">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/theme.js"></script>
 </body>
 </html>

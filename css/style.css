@@ -117,3 +117,39 @@ select option {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+/* Light Theme */
+body.light {
+    background-color: #f1f5f9; /* bg-slate-100 */
+    color: #0f172a; /* text-slate-900 */
+    background-image: none;
+}
+
+body.light .glass-card {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+body.light nav {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+}
+
+body.light .nav-link.active {
+    background-color: #0f172a;
+    color: #ffffff;
+}
+
+body.light select option {
+    background-color: #ffffff;
+    color: #0f172a;
+}
+
+body.light .progress-circle {
+    background: conic-gradient(var(--c, #0f172a) var(--p, 0%), #0000 0);
+}
+
+body.light .progress-circle::before {
+    background: #e2e8f0; /* bg-slate-200 */
+}
