@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeDownloadModal = document.getElementById('close-download-modal');
 
     // Function to create a bar chart
-    function createBarChart(container, data, unit) {
+    function createBarChart(container, data, unit, labels) {
         container.innerHTML = '';
         const maxVal = Math.max(...data);
         const chart = document.createElement('div');
@@ -40,11 +40,22 @@ document.addEventListener('DOMContentLoaded', () => {
             chart.appendChild(bar);
         });
         container.appendChild(chart);
+
+        // Add labels
+        const labelContainer = document.createElement('div');
+        labelContainer.className = 'chart-labels';
+        labels.forEach(label => {
+            const labelEl = document.createElement('span');
+            labelEl.textContent = label;
+            labelContainer.appendChild(labelEl);
+        });
+        container.appendChild(labelContainer);
     }
 
     // Populate charts
-    createBarChart(activityChart, weeklySummary.activity, 'min');
-    createBarChart(calorieChart, weeklySummary.calories, 'kcal');
+    const dayLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    createBarChart(activityChart, weeklySummary.activity, 'min', dayLabels);
+    createBarChart(calorieChart, weeklySummary.calories, 'kcal', dayLabels);
 
     // Handle button clicks
     downloadBtn.addEventListener('click', () => {
@@ -56,11 +67,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     resetBtn.addEventListener('click', () => {
-        if (confirm('Are you sure you want to reset all data? This cannot be undone.')) {
-            localStorage.clear();
-            sessionStorage.clear();
-            // In a real app, you might want to reset the data in data.js to its original state
-            // For this static site, we'll just reload.
+        if (confirm('Are you sure you want to reset all data? This will clear any added activities and meals.')) {
+            localStorage.removeItem('activities');
+            localStorage.removeItem('meals');
             location.reload();
         }
     });

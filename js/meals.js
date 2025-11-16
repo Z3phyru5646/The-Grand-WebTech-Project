@@ -2,7 +2,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const mealSections = document.getElementById('meal-sections');
     const totalCaloriesEl = document.getElementById('total-calories');
 
-    let currentMeals = JSON.parse(JSON.stringify(meals)); // Deep copy to avoid modifying original data
+    // Load meals from localStorage or use initial data
+    let currentMeals = JSON.parse(localStorage.getItem('meals')) || JSON.parse(JSON.stringify(meals));
+
+    // Function to save meals to localStorage
+    function saveMeals() {
+        localStorage.setItem('meals', JSON.stringify(currentMeals));
+    }
 
     // Function to calculate total calories
     function calculateTotalCalories() {
@@ -58,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     currentMeals[mealType].push({ item, cal });
                     itemInput.value = '';
                     calInput.value = '';
+                    saveMeals(); // Save to localStorage
                     renderMealSections();
                 }
             });
@@ -68,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const mealType = e.target.dataset.mealType;
                 const item = e.target.dataset.item;
                 currentMeals[mealType] = currentMeals[mealType].filter(meal => meal.item !== item);
+                saveMeals(); // Save to localStorage
                 renderMealSections();
             });
         });

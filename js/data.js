@@ -1,7 +1,13 @@
 const dailyStats = {
     steps: 7580,
     calories: 460,
-    water: 2.5 
+    water: 2.5 // liters
+};
+
+const dailyGoals = {
+    steps: 10000,
+    calories: 2000,
+    water: 3 // liters
 };
 
 const activities = [

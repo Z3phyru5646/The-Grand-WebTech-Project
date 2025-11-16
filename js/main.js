@@ -12,13 +12,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Function to create a stat card
-    function createStatCard(title, value, unit, icon) {
+    function createStatCard(title, value, unit, icon, goal) {
         const card = document.createElement('div');
         card.className = 'glass-card p-6 flex flex-col items-center justify-center fade-in';
+        
+        const percentage = goal ? (value / goal) * 100 : 0;
+
         card.innerHTML = `
-            <div class="text-4xl mb-2">${icon}</div>
+            <div class="relative progress-circle mb-4" style="--p:${percentage}">
+                <div class="relative text-3xl">${icon}</div>
+            </div>
             <h2 class="text-xl font-bold">${title}</h2>
-            <p class="text-3xl font-semibold text-cyan-400">${value} <span class="text-lg text-gray-400">${unit}</span></p>
+            <p class="text-3xl font-semibold text-cyan-400">${value} <span class="text-lg text-gray-400">${goal ? `/ ${goal}` : ''} ${unit}</span></p>
         `;
         return card;
     }
@@ -26,13 +31,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Load daily stats and create cards
     function loadDashboard() {
         const stats = [
-            { title: 'Steps Taken', value: dailyStats.steps, unit: '', icon: '👟' },
-            { title: 'Calories Burned', value: dailyStats.calories, unit: 'kcal', icon: '🔥' },
-            { title: 'Water Intake', value: dailyStats.water, unit: 'liters', icon: '💧' }
+            { title: 'Steps Taken', value: dailyStats.steps, unit: '', icon: '👟', goal: dailyGoals.steps },
+            { title: 'Calories Burned', value: dailyStats.calories, unit: 'kcal', icon: '🔥', goal: dailyGoals.calories },
+            { title: 'Water Intake', value: dailyStats.water, unit: 'liters', icon: '💧', goal: dailyGoals.water }
         ];
 
         stats.forEach(stat => {
-            const card = createStatCard(stat.title, stat.value, stat.unit, stat.icon);
+            const card = createStatCard(stat.title, stat.value, stat.unit, stat.icon, stat.goal);
             dashboardGrid.appendChild(card);
         });
     }

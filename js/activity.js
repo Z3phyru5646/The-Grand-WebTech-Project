@@ -5,7 +5,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const successModal = document.getElementById('success-modal');
     const closeModal = document.getElementById('close-modal');
 
-    let currentActivities = [...activities]; // Start with the initial data
+    // Load activities from localStorage or use initial data
+    let currentActivities = JSON.parse(localStorage.getItem('activities')) || activities;
+
+    // Function to save activities to localStorage
+    function saveActivities() {
+        localStorage.setItem('activities', JSON.stringify(currentActivities));
+    }
 
     // Function to render activities
     function renderActivities(filter = 'all') {
@@ -45,23 +51,40 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle form submission
     activityForm.addEventListener('submit', (e) => {
         e.preventDefault();
+        
         const name = document.getElementById('activity-name').value.trim();
         const duration = parseInt(document.getElementById('activity-duration').value);
         const calories = parseInt(document.getElementById('activity-calories').value);
         const time = document.getElementById('activity-time').value;
 
-        if (!name || !duration || !calories) {
-            alert('All fields are required.');
-            return;
+        // Inline validation
+        let isValid = true;
+        if (!name) {
+            document.getElementById('name-error').style.display = 'block';
+            isValid = false;
+        } else {
+            document.getElementById('name-error').style.display = 'none';
         }
 
-        if (duration <= 0 || calories <= 0) {
-            alert('Duration and calories must be positive numbers.');
-            return;
+        if (isNaN(duration) || duration <= 0) {
+            document.getElementById('duration-error').style.display = 'block';
+            isValid = false;
+        } else {
+            document.getElementById('duration-error').style.display = 'none';
         }
+
+        if (isNaN(calories) || calories <= 0) {
+            document.getElementById('calories-error').style.display = 'block';
+            isValid = false;
+        } else {
+            document.getElementById('calories-error').style.display = 'none';
+        }
+
+        if (!isValid) return;
 
         const newActivity = { name, duration, calories, time };
         currentActivities.push(newActivity);
+        saveActivities(); // Save to localStorage
         renderActivities(); // Re-render with the new activity
         activityForm.reset();
         successModal.classList.add('visible');
