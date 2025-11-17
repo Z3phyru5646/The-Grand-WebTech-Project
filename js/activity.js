@@ -42,8 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle filter button clicks
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
-            filterButtons.forEach(btn => btn.classList.remove('bg-cyan-500', 'text-black'));
-            button.classList.add('bg-cyan-500', 'text-black');
+            filterButtons.forEach(btn => btn.classList.remove('bg-green-500', 'text-black'));
+            button.classList.add('bg-green-500', 'text-black');
             renderActivities(button.dataset.filter);
         });
     });

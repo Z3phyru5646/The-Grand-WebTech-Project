@@ -1,38 +1,39 @@
-/* Basic Styles & Glassmorphism */
+/* Basic Styles & Cyber-Retro Theme */
 body {
-    background-color: #0a0a0a;
-    background-image: radial-gradient(circle at top right, rgba(16, 83, 107, 0.3), transparent 40%),
-                      radial-gradient(circle at bottom left, rgba(56, 20, 107, 0.3), transparent 50%);
+    background-color: #0d0d0d; /* Near-black charcoal */
+    font-family: 'Fira Code', monospace;
+    color: #00ff41; /* Glowing green */
     min-height: 100vh;
 }
 
 .glass-card {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(0, 255, 65, 0.05);
     backdrop-filter: blur(10px);
     border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 255, 65, 0.2);
     transition: all 0.3s ease;
 }
 
 .glass-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 255, 65, 0.1);
+    border-color: rgba(0, 255, 65, 0.4);
 }
 
 .nav-link {
     padding: 8px 16px;
     border-radius: 8px;
     transition: background-color 0.3s, color 0.3s;
+    color: #00ff41;
 }
 
 .nav-link:hover {
-    background-color: rgba(0, 255, 255, 0.1);
-    color: #00ffff;
+    background-color: rgba(0, 255, 65, 0.1);
 }
 
 .nav-link.active {
-    background-color: #00ffff;
-    color: #0a0a0a;
+    background-color: #00ff41;
+    color: #0d0d0d;
     font-weight: bold;
 }
 
@@ -75,7 +76,7 @@ body {
     border-radius: 50%;
     display: grid;
     place-items: center;
-    background: conic-gradient(var(--c, #00ffff) var(--p, 0%), #0000 0);
+    background: conic-gradient(var(--c, #00ff41) var(--p, 0%), #0000 0);
     transition: background 0.5s;
 }
 .progress-circle::before {
@@ -88,9 +89,15 @@ body {
 }
 
 /* Form Controls */
+select, input, select option {
+    background-color: #1a1a1a;
+    color: #00ff41;
+    border-color: rgba(0, 255, 65, 0.2);
+}
+
 select option {
-    background-color: #2d3748; /* bg-gray-800 */
-    color: #ffffff;
+    background-color: #1a1a1a;
+    color: #00ff41;
 }
 
 /* Form Validation */
@@ -116,40 +123,4 @@ select option {
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
-}
-
-/* Light Theme */
-body.light {
-    background-color: #f1f5f9; /* bg-slate-100 */
-    color: #0f172a; /* text-slate-900 */
-    background-image: none;
-}
-
-body.light .glass-card {
-    background: rgba(255, 255, 255, 0.6);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-}
-
-body.light nav {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px);
-}
-
-body.light .nav-link.active {
-    background-color: #0f172a;
-    color: #ffffff;
-}
-
-body.light select option {
-    background-color: #ffffff;
-    color: #0f172a;
-}
-
-body.light .progress-circle {
-    background: conic-gradient(var(--c, #0f172a) var(--p, 0%), #0000 0);
-}
-
-body.light .progress-circle::before {
-    background: #e2e8f0; /* bg-slate-200 */
 }

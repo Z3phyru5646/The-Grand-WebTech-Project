@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <form class="mt-4 flex space-x-2 add-meal-form" data-meal-type="${mealType}">
                     <input type="text" placeholder="Item" class="flex-grow bg-white/5 p-2 rounded-md border border-white/20">
                     <input type="number" placeholder="Cal" class="w-20 bg-white/5 p-2 rounded-md border border-white/20">
-                    <button type="submit" class="bg-cyan-500 text-black px-3 rounded-md">+</button>
+                    <button type="submit" class="bg-green-500 text-black px-3 rounded-md">+</button>
                 </form>
             `;
             mealSections.appendChild(section);

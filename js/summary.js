@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         data.forEach(value => {
             const bar = document.createElement('div');
             const height = (value / maxVal) * 100;
-            bar.className = 'w-10 bg-cyan-500 rounded-t-md hover:bg-cyan-400 transition-all duration-300';
+            bar.className = 'w-10 bg-green-500 rounded-t-md hover:bg-green-400 transition-all duration-300';
             bar.style.height = '0%';
             bar.dataset.value = `${value} ${unit}`;
             
